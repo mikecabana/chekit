@@ -1,21 +1,21 @@
-import type { AppProps, NextWebVitalsMetric  /*, AppContext */ } from 'next/app'
+import type { AppProps, NextWebVitalsMetric /*, AppContext */ } from 'next/app';
 
-import { Provider } from 'next-auth/client'
+import { Provider } from 'next-auth/client';
 
-import '../styles/globals.scss'
+import '../styles/globals.scss';
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
-    if (process.env.NODE_ENV !== 'production') {
-        console.log(metric);
-    }
+	if (process.env.NODE_ENV !== 'production') {
+		console.log(metric);
+	}
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
-    return (
-        <Provider session={pageProps.session}>
-            <Component {...pageProps} />
-        </Provider>
-    );
+	return (
+		<Provider session={pageProps.session}>
+			<Component {...pageProps} />
+		</Provider>
+	);
 }
 
-export default MyApp
+export default MyApp;
