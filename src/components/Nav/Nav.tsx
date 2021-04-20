@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { Fragment } from 'react';
 import Link from 'next/link';
 import styles from './Nav.module.scss';
@@ -103,6 +103,16 @@ function classNames(...classes) {
 
 export function Nav({}: NavProps) {
 	const [session, loading] = useSession();
+
+	const handleSignIn = (e: MouseEvent) => {
+		e.preventDefault();
+		signIn();
+	};
+
+	const handleSignOut = (e: Event) => {
+		e.preventDefault();
+		signOut();
+	};
 	return (
 		<Popover className="relative bg-white">
 			{({ open }) => (
@@ -300,16 +310,36 @@ export function Nav({}: NavProps) {
 								</Popover>
 							</Popover.Group>
 							<div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-								<a
-									href="#"
-									className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
-									Sign in
-								</a>
-								<a
-									href="#"
-									className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-									Sign up
-								</a>
+								{!session && (
+									<>
+										<a
+											href={'/api/auth/signin'}
+											onClick={(e) => handleSignIn}
+											className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+											Sign in
+										</a>
+										<a
+											href="#"
+											className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+											Sign up
+										</a>
+									</>
+								)}
+								{session && (
+									<>
+										<a
+											href={'/api/auth/signout'}
+											onClick={(e) => handleSignOut}
+											className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+											Sign out
+										</a>
+										<a
+											href="#"
+											className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+											{session.user.name}
+										</a>
+									</>
+								)}
 							</div>
 						</div>
 					</div>
