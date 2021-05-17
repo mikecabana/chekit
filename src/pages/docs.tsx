@@ -6,7 +6,7 @@ export default function Home() {
 	return (
 		<Layout>
 			<Head>
-				<title>Docs</title>
+				<title>Chekit ✔ | Docs</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<div>

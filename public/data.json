@@ -1,0 +1,19 @@
+{
+	"checklist": [
+		{
+			"label": "Some awesome item",
+			"isChecked": false,
+			"tags": ["drinks"],
+			"description": "Tousled thundercats wolf cronut readymade vice affogato mlkshk bespoke.",
+			"owner": "johndoe"
+		},
+		{
+			"label": "Some other really awesome item",
+			"isChecked": false,
+			"tags": ["food"],
+			"description": "Raw denim chicharrones man bun, YOLO kogi subway tile everyday carry sartorial.",
+			"owner": "peterparker"
+		}
+	],
+	"tags": ["drinks", "food"]
+}

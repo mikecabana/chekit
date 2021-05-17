@@ -7,10 +7,14 @@ import { Footer } from '../Footer';
 export function Layout({ children }) {
 	return (
 		<>
-			<div className={`dark:bg-gray-900 ${styles.container}`}>
+			<div className="dark:bg-gray-900 flex flex-col justify-start" style={{ minHeight: '100vh' }}>
 				<Banner message={'Welcome to Chekit ✔'} />
 				<Nav />
-				<main className={styles.main}>{children}</main>
+				<main className="flex-1 relative">
+					<div className="max-w-7xl mx-auto p-4">
+						<div className="">{children}</div>
+					</div>
+				</main>
 				<Footer />
 			</div>
 		</>
