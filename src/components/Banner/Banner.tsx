@@ -7,7 +7,7 @@ export type BannerProps = {
 
 export function Banner({ message }: BannerProps) {
 	return (
-		<div className="flex flex-row items-center justify-center h-12 bg-gray-900 text-indigo-300 font-semibold">
+		<div className="flex flex-row items-center justify-center h-12 bg-gray-900 dark:bg-gray-800 text-indigo-300 font-semibold">
 			<p>{message}</p>
 		</div>
 	);

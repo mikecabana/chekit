@@ -1,24 +1,24 @@
-export default function DarkMode() {
-	if (typeof window !== 'undefined') {
-		// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-		if (
-			localStorage.theme === 'dark' ||
-			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-		) {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
-	}
+import { SunIcon, MoonIcon } from '@heroicons/react/outline';
+import { useTheme } from 'next-themes';
 
-	// Whenever the user explicitly chooses light mode
-	// localStorage.theme = 'light';
+export const DarkMode = () => {
+	const { theme, setTheme } = useTheme();
 
-	// Whenever the user explicitly chooses dark mode
-	// localStorage.theme = 'dark';
-
-	// Whenever the user explicitly chooses to respect the OS preference
-	// localStorage.removeItem('theme');
-
-	return <></>;
-}
+	return (
+		<div>
+			{theme === 'dark' ? (
+				<button
+					onClick={() => setTheme('light')}
+					className="w-8 h-8 text-gray-500 p-2 rounded-full hover:bg-gray-700 hover:text-yellow-400">
+					<SunIcon />
+				</button>
+			) : (
+				<button
+					onClick={() => setTheme('dark')}
+					className="w-8 h-8 text-gray-500 p-2 rounded-full hover:bg-gray-100 hover:text-gray-900">
+					<MoonIcon />
+				</button>
+			)}
+		</div>
+	);
+};
