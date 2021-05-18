@@ -1,6 +1,7 @@
 {
 	"checklist": [
 		{
+			"id": 1,
 			"label": "Some awesome item",
 			"isChecked": false,
 			"tags": ["drinks"],
@@ -8,6 +9,7 @@
 			"owner": "johndoe"
 		},
 		{
+			"id": 2,
 			"label": "Some other really awesome item",
 			"isChecked": false,
 			"tags": ["food"],
