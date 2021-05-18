@@ -6,7 +6,7 @@
 			"isChecked": false,
 			"tags": ["drinks"],
 			"description": "Tousled thundercats wolf cronut readymade vice affogato mlkshk bespoke.",
-			"owner": "johndoe"
+			"owner": ""
 		},
 		{
 			"id": 2,
@@ -14,7 +14,7 @@
 			"isChecked": false,
 			"tags": ["food"],
 			"description": "Raw denim chicharrones man bun, YOLO kogi subway tile everyday carry sartorial.",
-			"owner": "peterparker"
+			"owner": ""
 		}
 	],
 	"tags": ["drinks", "food"]

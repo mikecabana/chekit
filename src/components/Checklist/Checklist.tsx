@@ -2,6 +2,7 @@ import { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import { H5 } from '../Headers';
 
 import _ from 'lodash';
+import { useSession } from 'next-auth/client';
 
 interface ChecklistItemProps {
 	label: string;
@@ -17,7 +18,10 @@ export interface ChecklistProps {
 }
 
 const ChecklistItem: FunctionComponent<ChecklistItemProps> = ({ isChecked, label, description, owner, tags }) => {
+	const [session, loading] = useSession();
+
 	const [checked, setChecked] = useState(isChecked);
+	const [checkOwner, setCheckOwner] = useState(owner);
 	const [debounceChecked, setDebounceChecked] = useState(isChecked);
 
 	const debounce = useCallback(
@@ -30,8 +34,10 @@ const ChecklistItem: FunctionComponent<ChecklistItemProps> = ({ isChecked, label
 	);
 
 	const handleCheck = (event: any) => {
-		setChecked(event.target.checked);
-		debounce(event.target.checked);
+		const value: boolean = event.target.checked;
+		setChecked(value);
+		setCheckOwner(value ? session.user.name : null);
+		debounce(value);
 	};
 
 	return (
@@ -46,7 +52,7 @@ const ChecklistItem: FunctionComponent<ChecklistItemProps> = ({ isChecked, label
 				<H5>{label}</H5>
 				{description && <p className="text-gray-600">{description}</p>}
 				<div className="flex flex-row justify-between items-center">
-					{owner && <div className="text-sm text-gray-400 italic mt-1">Checked by: {owner}</div>}
+					{checkOwner && <div className="text-sm text-gray-400 italic mt-1">Checked by: {checkOwner}</div>}
 				</div>
 				<div className="mt-2">
 					{tags.map((tag, i) => (
@@ -67,7 +73,7 @@ export const Checklist: FunctionComponent<ChecklistProps> = ({ items, tags }) =>
 		e.preventDefault();
 	};
 	return (
-		<div className="grid grid-cols-3 gap-4 relative">
+		<div className="grid grid-cols-3 gap-4">
 			<div className="col-span-2">
 				{items.map((item, i) => (
 					<ChecklistItem
@@ -80,18 +86,20 @@ export const Checklist: FunctionComponent<ChecklistProps> = ({ items, tags }) =>
 					/>
 				))}
 			</div>
-			<div className="sticky p-4 bg-gray-100 dark:bg-gray-800 rounded-2xl">
-				<H5>Filter by Tags</H5>
-				<div className="mt-4">
-					{tags.map((tag, i) => (
-						<a
-							href="#"
-							onClick={(e) => handleOnFilter(e, tag)}
-							key={i}
-							className="text-right py-2 px-4 m-1 cursor-pointer uppercase text-md font-semibold text-indigo-500 dark:text-indigo-300 hover:bg-white dark:hover:bg-gray-900 rounded-full transition-colors">
-							{tag}
-						</a>
-					))}
+			<div className="relative">
+				<div className="sticky p-4 bg-gray-100 dark:bg-gray-800 rounded-2xl">
+					<H5>Filter by Tags</H5>
+					<div className="mt-4">
+						{tags.map((tag, i) => (
+							<a
+								href="#"
+								onClick={(e) => handleOnFilter(e, tag)}
+								key={i}
+								className="text-right py-2 px-4 my-1 mr-1 cursor-pointer uppercase text-md font-semibold text-indigo-500 dark:text-indigo-300 hover:bg-white dark:hover:bg-gray-900 rounded-full transition-colors">
+								{tag}
+							</a>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>

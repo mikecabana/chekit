@@ -58,10 +58,14 @@ export function Nav({}: NavProps) {
 							</div>
 							<Popover.Group as="nav" className="hidden md:flex md:items-center center space-x-10">
 								<Link href="/">
-									<a className="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
+									<a className="text-base font-medium text-gray-500 hover:text-gray-900 dark:hover:text-indigo-500">
+										Home
+									</a>
 								</Link>
 								<Link href="/docs">
-									<a className="text-base font-medium text-gray-500 hover:text-gray-900">Docs</a>
+									<a className="text-base font-medium text-gray-500 hover:text-gray-900 dark:hover:text-indigo-500">
+										Docs
+									</a>
 								</Link>
 								<DarkMode />
 							</Popover.Group>
@@ -86,7 +90,7 @@ export function Nav({}: NavProps) {
 										<a
 											href={'/api/auth/signout'}
 											onClick={(e) => handleSignOut}
-											className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+											className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 dark:hover:text-indigo-500">
 											Sign out
 										</a>
 										<a
