@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-	a {
-		@apply text-indigo-600;
-	}
+    a {
+        @apply text-indigo-600;
+    }
 
-	a:hover {
-		@apply underline;
-	}
+    a:hover {
+        @apply underline;
+    }
 }
 
 // :root {
@@ -19,13 +19,14 @@
 // 	--accent: black;
 // }
 
-// html,
-// body {
-// 	padding: 0;
-// 	margin: 0;
-// 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-// 		Helvetica Neue, sans-serif;
-// }
+html,
+body {
+    height: 100vh;
+    // 	padding: 0;
+    // 	margin: 0;
+    // 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    // 		Helvetica Neue, sans-serif;
+}
 
 // a {
 // 	color: inherit;

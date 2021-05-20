@@ -95,7 +95,7 @@ export const Checklist: FunctionComponent<ChecklistProps> = ({ items, tags }) =>
 								href="#"
 								onClick={(e) => handleOnFilter(e, tag)}
 								key={i}
-								className="text-right py-2 px-4 my-1 mr-1 cursor-pointer uppercase text-md font-semibold text-indigo-500 dark:text-indigo-300 hover:bg-white dark:hover:bg-gray-900 rounded-full transition-colors">
+								className="text-right py-1 px-3 my-1 mr-1 cursor-pointer uppercase text-md font-semibold text-indigo-500 dark:text-indigo-300 hover:bg-white dark:hover:bg-gray-900 rounded-full transition-colors">
 								{tag}
 							</a>
 						))}
