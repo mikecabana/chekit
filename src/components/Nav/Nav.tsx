@@ -1,35 +1,16 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import { Fragment } from 'react';
 import Link from 'next/link';
 import styles from './Nav.module.scss';
 import { LogoutIcon, LoginIcon } from '@heroicons/react/outline';
 
 import { Popover, Transition } from '@headlessui/react';
-import {
-    BookmarkAltIcon,
-    CalendarIcon,
-    ChartBarIcon,
-    CursorClickIcon,
-    MenuIcon,
-    PhoneIcon,
-    PlayIcon,
-    RefreshIcon,
-    ShieldCheckIcon,
-    SupportIcon,
-    ViewGridIcon,
-    XIcon,
-} from '@heroicons/react/outline';
-import { ChevronDownIcon } from '@heroicons/react/solid';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
 
 import { signIn, signOut, useSession } from 'next-auth/client';
-import Image from 'next/image';
 import { DarkMode } from '../DarkMode';
 
 export type NavProps = {};
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-}
 
 export function Nav({}: NavProps) {
     const [session, loading] = useSession();
@@ -77,8 +58,8 @@ export function Nav({}: NavProps) {
                                             onClick={(e) => handleSignIn}
                                             className="flex items-center whitespace-nowrap pr-3 pl-4 py-1 border border-transparent rounded-full shadow-sm text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-200 dark:hover:text-indigo-500 dark:hover:bg-gray-800"
                                         >
-                                                Sign in
-                                                <LoginIcon height="18" width="18" className="ml-2" />
+                                            Sign in
+                                            <LoginIcon height="18" width="18" className="ml-2" />
                                         </a>
                                         {/* <a
 											href="#"
