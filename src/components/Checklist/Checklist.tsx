@@ -87,7 +87,7 @@ export const Checklist: FunctionComponent<ChecklistProps> = ({ items, tags }) =>
 				))}
 			</div>
 			<div className="relative">
-				<div className="sticky p-4 bg-gray-100 dark:bg-gray-800 rounded-2xl">
+				<div className="sticky p-4 bg-gray-100 dark:bg-gray-800 rounded-2xl hidden md:block">
 					<H5>Filter by Tags</H5>
 					<div className="mt-4">
 						{tags.map((tag, i) => (
